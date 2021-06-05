@@ -1,0 +1,11 @@
+---
+# tasks file for java
+- name: Check if java rpm is already installed or not
+  yum:
+    list: "{{ java_version }}"
+  register: check_java_existence
+- name : Install java
+  yum:
+    name: "{{ java_version }}"
+    state: present
+  when: check_java_existence.results | selectattr("yumstate", "match", "installed") | list | length == 0

@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  roles:
+  - instances
+- hosts: ec2_instance_ips
+  gather_facts: no
+  roles:
+  - java
+  - httpd
+  - tomcat
+- hosts: localhost
+  roles:
+  - loadbalancer
