@@ -8,4 +8,4 @@
     src: files/index.html 
     dest: /var/www/html
   notify:
-  - httpd restart
+  - restart httpd
